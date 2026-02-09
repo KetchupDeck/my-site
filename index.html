@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>모두의 ROS2 - 비전공자를 위한 로봇 운영체제 마스터 클래스</title>
+    <title>모두의 ROS2 - 비전공자를 위한 로봇 운영체제 마스터 클래스(기초편)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --blue: #5b9aff;
+            --pink: #ff6b9d;
+            --green: #4ade80;
+            --amber: #fbbf24;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -73,7 +80,7 @@
             letter-spacing: 2px;
             margin-bottom: 30px;
             text-transform: uppercase;
-            border: 5px solid #fff;
+            border: 5px solid var(--blue);
             display: inline-block;
             padding: 20px 40px;
             line-height: 1.4;
@@ -100,11 +107,21 @@
         }
 
         .info-box {
-            border: 2px solid #fff;
+            border: 2px solid rgba(255,255,255,0.3);
             padding: 20px;
             text-align: center;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
         }
+
+        .info-box:nth-child(1) { border-top: 3px solid var(--blue); }
+        .info-box:nth-child(2) { border-top: 3px solid var(--pink); }
+        .info-box:nth-child(3) { border-top: 3px solid var(--green); }
+        .info-box:nth-child(4) { border-top: 3px solid var(--amber); }
+
+        .info-box:nth-child(1) .info-box-title { color: var(--blue); }
+        .info-box:nth-child(2) .info-box-title { color: var(--pink); }
+        .info-box:nth-child(3) .info-box-title { color: var(--green); }
+        .info-box:nth-child(4) .info-box-title { color: var(--amber); }
 
         .info-box-title {
             font-family: 'Press Start 2P', monospace;
@@ -115,23 +132,23 @@
 
         .cta-button {
             display: inline-block;
-            background: #fff;
-            color: #000;
+            background: var(--pink);
+            color: #fff;
             padding: 20px 60px;
             font-size: 1.2em;
             font-weight: bold;
             text-decoration: none;
-            border: 4px solid #fff;
+            border: 4px solid var(--pink);
             transition: all 0.3s;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
         .cta-button:hover {
-            background: #000;
-            color: #fff;
+            background: transparent;
+            color: var(--pink);
             transform: translate(5px, 5px);
-            box-shadow: -5px -5px 0 #fff;
+            box-shadow: -5px -5px 0 var(--pink);
         }
 
         .section {
@@ -154,13 +171,13 @@
             margin-bottom: 50px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-left: 10px solid #000;
+            border-left: 10px solid var(--blue);
             padding-left: 20px;
             line-height: 1.6;
         }
 
         .section-alt .section-title {
-            border-left-color: #fff;
+            border-left-color: var(--green);
         }
 
         .why-card {
@@ -187,11 +204,16 @@
             font-family: 'Press Start 2P', monospace;
             font-size: 3.5em;
             font-weight: 900;
-            opacity: 0.2;
+            opacity: 0.4;
             position: absolute;
             right: 20px;
             top: 20px;
         }
+
+        .why-card:nth-child(2) .why-number { color: var(--blue); }
+        .why-card:nth-child(3) .why-number { color: var(--pink); }
+        .why-card:nth-child(4) .why-number { color: var(--green); }
+        .why-card:nth-child(5) .why-number { color: var(--amber); }
 
         .why-title {
             font-size: 1.6em;
@@ -223,6 +245,11 @@
             font-size: 2.5em;
             font-weight: 900;
             margin-bottom: 20px;
+            color: var(--green);
+        }
+
+        .feature-item:hover .feature-number {
+            color: var(--green);
         }
 
         .feature-title {
@@ -239,21 +266,31 @@
         }
 
         .week-card {
-            border: 4px solid #fff;
+            border: 4px solid rgba(255,255,255,0.3);
             padding: 30px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
             position: relative;
         }
+
+        .week-card:nth-child(1) { border-left: 4px solid var(--blue); }
+        .week-card:nth-child(2) { border-left: 4px solid var(--pink); }
+        .week-card:nth-child(3) { border-left: 4px solid var(--green); }
+        .week-card:nth-child(4) { border-left: 4px solid var(--amber); }
 
         .week-number {
             font-family: 'Press Start 2P', monospace;
             font-size: 4em;
             font-weight: 900;
-            opacity: 0.15;
+            opacity: 0.3;
             position: absolute;
             right: 20px;
             top: 20px;
         }
+
+        .week-card:nth-child(1) .week-number { color: var(--blue); }
+        .week-card:nth-child(2) .week-number { color: var(--pink); }
+        .week-card:nth-child(3) .week-number { color: var(--green); }
+        .week-card:nth-child(4) .week-number { color: var(--amber); }
 
         .week-title {
             font-size: 1.5em;
@@ -281,6 +318,11 @@
             left: 0;
         }
 
+        .week-card:nth-child(1) .week-content li::before { color: var(--blue); }
+        .week-card:nth-child(2) .week-content li::before { color: var(--pink); }
+        .week-card:nth-child(3) .week-content li::before { color: var(--green); }
+        .week-card:nth-child(4) .week-content li::before { color: var(--amber); }
+
         .target-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -296,9 +338,15 @@
             text-align: center;
             font-size: 1em;
             font-weight: bold;
-            border: 3px solid #fff;
+            border: 3px solid rgba(255,255,255,0.2);
             line-height: 1.6;
+            border-top: 4px solid var(--amber);
         }
+
+        .target-item:nth-child(1) { border-top-color: var(--blue); }
+        .target-item:nth-child(2) { border-top-color: var(--pink); }
+        .target-item:nth-child(3) { border-top-color: var(--green); }
+        .target-item:nth-child(4) { border-top-color: var(--amber); }
 
         .instructor-section {
             display: grid;
@@ -311,7 +359,7 @@
             width: 300px;
             height: 300px;
             background: rgba(0, 0, 0, 0.85);
-            border: 5px solid #000;
+            border: 5px solid var(--blue);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -326,7 +374,7 @@
             left: 10px;
             right: -10px;
             bottom: -10px;
-            border: 5px solid #000;
+            border: 5px solid rgba(91, 154, 255, 0.3);
             z-index: -1;
         }
 
@@ -353,6 +401,7 @@
             content: '▶';
             position: absolute;
             left: 0;
+            color: var(--blue);
         }
 
         .price-container {
@@ -397,6 +446,7 @@
             font-size: 3.5em;
             font-weight: 900;
             margin: 20px 0;
+            color: var(--pink);
         }
 
         .price-note {
@@ -404,7 +454,7 @@
             margin-top: 20px;
             padding: 20px;
             background: rgba(0, 0, 0, 0.85);
-            color: #fff;
+            color: var(--amber);
             line-height: 1.6;
         }
 
@@ -462,6 +512,7 @@
             margin-bottom: 30px;
             text-align: center;
             line-height: 1.5;
+            color: var(--amber);
         }
 
         .expansion-grid {
@@ -484,6 +535,11 @@
             padding-bottom: 15px;
             border-bottom: 2px solid #000;
         }
+
+        .expansion-card:nth-child(1) h4 { color: var(--blue); }
+        .expansion-card:nth-child(2) h4 { color: var(--pink); }
+        .expansion-card:nth-child(3) h4 { color: var(--green); }
+        .expansion-card:nth-child(4) h4 { color: var(--amber); }
 
         footer {
             background: rgba(255, 255, 255, 0.85);
@@ -517,12 +573,12 @@
         .divider {
             width: 100%;
             height: 5px;
-            background: repeating-linear-gradient(
+            background: linear-gradient(
                 90deg,
-                #000,
-                #000 20px,
-                transparent 20px,
-                transparent 40px
+                var(--blue),
+                var(--pink),
+                var(--green),
+                var(--amber)
             );
             margin: 80px 0;
             position: relative;
@@ -535,7 +591,7 @@
     <div class="hero">
         <div class="container">
             <div class="hero-title">모두의<br>ROS2</div>
-            <p class="hero-subtitle">비전공자를 위한 로봇 운영체제 마스터 클래스</p>
+            <p class="hero-subtitle">비전공자를 위한 로봇 운영체제 마스터 클래스(기초편)</p>
             <p class="hero-tagline">4일 완성 | 하드웨어 없이 시작하는 로봇 개발</p>
             
             <div class="info-grid">
@@ -729,7 +785,7 @@
                 <div class="instructor-avatar">
                     🤖
                 </div>
-                <div class="instructor-bio">
+                <div class="instructors-bio">
                     <h3>Henry Sim</h3>
                     <p style="font-size: 1.2em; margin-bottom: 30px; line-height: 1.6;">Industrial Digital Twin Architect<br>& Robotics AI Engineer</p>
                     <ul>
@@ -794,8 +850,8 @@
 
     <footer>
         <div class="container">
-            <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 20px;">STORY CODE LAB</p>
-            <p style="line-height: 1.7;">모두의 ROS2 - 비전공자를 위한 로봇 운영체제 마스터 클래스</p>
+            <p style="font-size: 1.2em; font-weight: bold; margin-bottom: 20px;">KechupDeck Studio</p>
+            <p style="line-height: 1.7;">모두의 ROS2 - 비전공자를 위한 로봇 운영체제 마스터 클래스(기초편)</p>
             <div class="divider" style="margin: 30px auto; max-width: 300px; height: 3px;"></div>
             <p>문의: ketchupdeck@gmail.com</p>
         </div>
@@ -814,47 +870,50 @@
             canvas.height = window.innerHeight;
         });
         
+        const starColors = ['#5b9aff', '#ff6b9d', '#4ade80', '#fbbf24', '#fff', '#fff', '#fff'];
+
         class Star {
             constructor() {
+                this.color = starColors[Math.floor(Math.random() * starColors.length)];
                 this.reset();
             }
-            
+
             reset() {
                 this.x = Math.random() * canvas.width;
                 this.y = Math.random() * canvas.height;
                 this.z = Math.random() * canvas.width;
                 this.prevZ = this.z;
             }
-            
+
             update() {
                 this.prevZ = this.z;
                 this.z -= 15;
-                
+
                 if (this.z < 1) {
                     this.reset();
                 }
             }
-            
+
             draw() {
                 const centerX = canvas.width / 2;
                 const centerY = canvas.height / 2;
-                
+
                 const sx = (this.x - centerX) * (canvas.width / this.z) + centerX;
                 const sy = (this.y - centerY) * (canvas.width / this.z) + centerY;
-                
+
                 const prevSx = (this.x - centerX) * (canvas.width / this.prevZ) + centerX;
                 const prevSy = (this.y - centerY) * (canvas.width / this.prevZ) + centerY;
-                
+
                 const size = Math.max(0, (1 - this.z / canvas.width) * 3);
-                
-                ctx.strokeStyle = '#fff';
+
+                ctx.strokeStyle = this.color;
                 ctx.lineWidth = size;
                 ctx.beginPath();
                 ctx.moveTo(prevSx, prevSy);
                 ctx.lineTo(sx, sy);
                 ctx.stroke();
-                
-                ctx.fillStyle = '#fff';
+
+                ctx.fillStyle = this.color;
                 ctx.beginPath();
                 ctx.arc(sx, sy, size / 2, 0, Math.PI * 2);
                 ctx.fill();
